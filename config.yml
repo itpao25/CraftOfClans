@@ -1,0 +1,973 @@
+# ============================================================
+#  CraftOfClans config.yml 
+#  Plugin by itpao25
+#  if you need a help, use my discord channel:
+#  https://discord.gg/drtBqXj6
+# ============================================================
+
+# FREE MAP MODE
+# this option enables the /coc create command in a world of any type (flat, normal etc)
+# the world must be called clansworld
+# this mode disables the /coc start command
+freemode:
+   enable: true
+   # location where the player wants to generate the village
+   # if you don't respect the height limits you won't be able to create the village
+   min-height: 60
+   max-height: 85
+   
+# GENERATOR FOR MAP BUILDER
+# These fields can be modified only the first time, before the generation of the map
+generator:
+   surface: STONE
+   surface-block-pattern: true
+   surface-block-list:
+   - GREEN_TERRACOTTA
+   - LIME_TERRACOTTA
+   - CYAN_TERRACOTTA
+   surface-grass: true
+   surface-grass-list:
+   - DEAD_BUSH
+   
+storage: 
+   # device compatibile: "mysql" or "sqllite"
+   type: sqlite
+   
+   # Only if you want to use mysql (reccomended!)
+   username: root
+   password: hellohello
+   hostname: localhost
+   database: craftofclans
+   port: 3306
+   
+# Village size: 200 x 200
+village:
+    height: 60
+    # Player can build in own village?
+    # (Recommended: FALSE)
+    # some players may hinder the gameplay by building walls in their own village
+    player-can-build: false
+    wall-schematic: 'WALL.schem'
+    wall-corner-schematic: 'WALL_CORNER.schem'
+    wall-door-schematic: 'WALL_DOOR.schem'
+    
+# limits per village
+# Limit of structures for each expand
+limits:
+    limit-per-expand-enable: true
+    limit-per-expand-value: 4
+    
+# Expand size: 16 x 16
+expand:
+    # how many times it is possible expand the villages
+    max-for-village: 25
+    # cost of one expansion
+    cost-gems: 1000
+    # floor of the chunk after expansion (Pattern)
+    # see http://wiki.sk89q.com/wiki/WorldEdit/Block_data_syntax
+    floor: 'PODZOL,BROWN_TERRACOTTA,RED_TERRACOTTA'
+    # increment after each purchase
+    # [cost] -> value of "cost-gems", above this
+    # [total_expand] -> number of extensions total
+    # you can use mathematical calculations
+    incremet: cost * total_expand / 2
+    # if expanding the grass in the ground is automatically removed,
+    # otherwise it will be necessary for the player to break 
+    # the grass by hand in the territory paying for each broken element
+    grass-removal-automatically-onexpand: false
+    # if 'grass-removal-automatically-onexpand' is false, set the cost to remove entities
+    # types available:
+    # - cost_gems
+    # - cost_gold
+    # - cost_elixir
+    # - cost_dark_elixir
+    grass-removal-cost:
+        cost_gems: 10
+    # Items that can be accidentally dropped during a structure upgrade
+    fix-drop-items-on-upgrade:
+    - RAIL
+    - LADDER
+    - STONE_BUTTON
+    - WOOD_BUTTON
+    - WHITE_CARPET
+    - WOOD_PLATE
+    - STONE_PLATE
+    - GOLD_PLATE
+    - IRON_PLATE
+    - LEVER
+    - TORCH
+    - WALL_TORCH
+    - PAINTING
+    - SIGN
+    - SIGN_POST
+    - WALL_SIGN
+    - FLOWER_POT
+    - REDSTONE_TORCH_OFF
+    - REDSTONE_TORCH_ON
+    - SIGN
+    
+# sell shop via gui
+sell:
+    gui-size: 18
+    gui-title: '&e&lSell your item'
+    # reward of the sale of an item
+    # Format: <amount>:<name of the item>:<prize in gems>
+    price:
+    - '64:COBBLESTONE:10'
+    - '1:GOLDEN_HELMET:20'
+    
+# shop
+shop:
+    # GUI for new structure (LEVEL 1)
+    structures-gui: 
+        title: '&1Build new structure'
+        
+        # Number of structures that can be purchased 
+        # {now} -> Current number of structures by type
+        # {max} -> Max number of structures can be purchased by type
+        max-build-number: '&2Available: {now}/{max}'
+        
+        # Shows the damage a defense does
+        defense-lore-damage:
+        - '&7Damage: &3{damage}'
+        - '&7Range: &3{range}'
+
+        size: 36
+        # GOLD MINE
+        GOLD_MINE:
+            active: true
+            material: YELLOW_TERRACOTTA
+            title: '&e&lBuild a Gold mine'
+            slot: 1
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Gold mine level 1!'
+            
+        # COLLECTOR ELIXIR
+        COLLECTOR_ELIXIR:
+            active: true
+            material: PINK_TERRACOTTA
+            title: '&d&lBuild a Elixir Collector'
+            slot: 2
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Elixir collector level 1!'
+            
+        # ELIXIR STORAGE
+        ELIXIR_STORAGE:
+            active: true
+            material: PURPLE_TERRACOTTA
+            title: '&5&lBuild a Elixir Storage'
+            slot: 3
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Elixir storage level 1!'
+            
+        # GOLD STORAGE
+        GOLD_STORAGE:
+            active: true
+            material: ORANGE_TERRACOTTA
+            title: '&6&lBuild a Gold Storage'
+            slot: 4
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Gold storage level 1!'
+            
+        # Defense: ARCHER TOWER
+        ARCHER_TOWER:
+            active: true
+            material: BOW
+            title: '&7&lBuild a Archer tower'
+            slot: 10
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Gold storage level 1!'
+            
+        # Defense: CANNON
+        CANNON:
+            active: true
+            material: FLINT_AND_STEEL
+            title: '&8&lBuild a Cannon'
+            slot: 11
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Gold storage level 1!'
+            
+        # GEMS COLLECTOR
+        GEMS_COLLECTOR:
+            active: true
+            material: EMERALD_BLOCK
+            title: '&a&lBuild a Gems Collector'
+            slot: 5
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Gems Collector level 1!'
+            
+        # Defense: WIZARD_TOWER
+        WIZARD_TOWER:
+            active: true
+            material: BLAZE_POWDER
+            title: '&a&lBuild a Wizard Tower'
+            slot: 12
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Wizard Tower level 1!'
+            
+        # Defense: MORTAR
+        MORTAR:
+            active: true
+            material: OBSIDIAN
+            title: '&8&lBuild a Mortar'
+            slot: 13
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Mortar level 1!'
+            
+        # DARK_ELIXIR_STORAGE_2
+        DARK_ELIXIR_STORAGE:
+            active: true
+            material: ENDER_CHEST
+            title: '&8&lBuild a Dark Elixir Storage'
+            slot: 6
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Dark Elixir Storage level 1!'
+            
+        # DARK_ELIXIR_DRILL
+        DARK_ELIXIR_DRILL:
+            active: true
+            material: HOPPER_MINECART
+            title: '&7&lBuild a Dark Elixir Drill'
+            slot: 14
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Dark Elixir Drill level 1!'
+            
+        # Defense: TESLA
+        TESLA:
+            active: true
+            material: TORCH
+            title: '&3&lBuild a Tesla'
+            slot: 15
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Tesla level 1!'
+            
+        # Defense: BOMBA
+        BOMB:
+            active: true
+            material: TNT
+            title: '&4&lBuild a Bomb'
+            slot: 16
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild the Bomb'
+            
+        # Defense: GUARDIAN
+        GUARDIAN:
+            active: true
+            material: OCELOT_SPAWN_EGG
+            title: '&6&lSpawn a Guardian'
+            slot: 19
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cspawn the new Guardian'
+            
+        # Decorative Banner 
+        BANNER:
+            active: true
+            material: BLACK_BANNER
+            decoration: true
+            title: '&dDecorative: &5&lBanner'
+            slot: 28
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild a Banner'
+            
+        # Defense: Skeleton Trap
+        SKELETON_TRAP:
+            active: true
+            material: SKELETON_SKULL
+            title: '&7&lSkeleton Trap'
+            slot: 17
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild a Skeleton Trap'
+            
+        # Laboratory
+        LABORATORY:
+            active: true
+            material: BOOKSHELF
+            title: '&d&lLaboratory'
+            slot: 20
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild a Laboratory'
+            
+        # Barracks 
+        BARRACKS:
+            active: true
+            material: SPAWNER
+            title: '&6&lBarracks'
+            slot: 21
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild a Barracks'
+            
+        # Village Wall 
+        VILLAGE_WALL:
+            active: true
+            material: RED_SANDSTONE_WALL
+            title: '&c&lWall'
+            slot: 29
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild a Wall'
+            
+        # Village Gate Wall
+        VILLAGE_GATE_WALL:
+            active: true
+            material: ACACIA_FENCE_GATE
+            title: '&c&lGate Wall'
+            slot: 30
+            lore:
+            - '&cPlace this item at the point where you want'
+            - '&cbuild a Gate Wall'
+
+    # List of constructions with levels
+    # cost is the amount required gems
+    structures-core:
+        TOWNHALL:
+            # Can be moved? FALSE
+            can-be-moved: false
+            levels:
+                1:
+                    schematics-name: 'TOWNHALL_1.schematic'
+                2:
+                    schematics-name: 'TOWNHALL_2.schematic'
+                    cost_gold: 1000
+        GOLD_MINE:
+            # Can be moved? TRUE
+            can-be-moved: true
+            # Max number of times that can be built
+            limit-based-townhall-level:
+                1: 2
+                2: 3
+            levels:
+                1:
+                    # Costs
+                    # You can use:
+                    # - cost_gems (for gems)
+                    # - cost_elixir (for elixir)
+                    # - cost_gold (for gold)
+                    # - cost_dark_elixir (for dark elixir)
+                    cost_elixir: 150
+                    # maximum capacity
+                    capacity: 500
+                    # increase in resources by minute
+                    increment-forminute: 3.33
+                    # Schematics name located in /plugins/CraftOfClans/schematics
+                    schematics-name: 'GOLDMINE_1.schematic'
+                2:
+                    schematics-name: 'GOLDMINE_2.schematic'
+                    cost_elixir: 300
+                    capacity: 1000
+                    increment-forminute: 6
+                3:
+                    schematics-name: 'GOLDMINE_3.schematic'
+                    cost_elixir: 700
+                    capacity: 1500
+                    increment-forminute: 10
+                    # Town Hall level required 
+                    townhall-required: 2
+                4:
+                    schematics-name: 'GOLDMINE_4.schematic'
+                    cost_elixir: 1400
+                    capacity: 2500
+                    increment-forminute: 13
+                    townhall-required: 2
+                5:
+                    schematics-name: 'GOLDMINE_5.schematic'
+                    cost_elixir: 3000
+                    capacity: 10000
+                    increment-forminute: 16
+                    townhall-required: 3
+        COLLECTOR_ELIXIR:
+            can-be-moved: true
+            # Max number of times that can be built
+            limit-based-townhall-level:
+                1: 2
+                2: 3
+            levels:
+                1:
+                    cost_gold: 150
+                    capacity: 500
+                    increment-forminute: 3
+                    schematics-name: 'ELIXIR_COLLECTOR_1.schematic'
+                2:
+                    cost_gold: 300
+                    capacity: 1000
+                    increment-forminute: 6
+                    schematics-name: 'ELIXIR_COLLECTOR_2.schematic'
+                3:
+                    cost_gold: 700
+                    capacity: 1500
+                    increment-forminute: 10
+                    schematics-name: 'ELIXIR_COLLECTOR_3.schematic'
+                4:
+                    cost_elixir: 1400
+                    capacity: 2500
+                    increment-forminute: 13
+                    schematics-name: 'ELIXIR_COLLECTOR_4.schematic'
+                5:
+                    cost_gold: 3500
+                    capacity: 10000
+                    increment-forminute: 16
+                    schematics-name: 'ELIXIR_COLLECTOR_5.schematic'
+        
+        ELIXIR_STORAGE:
+            can-be-moved: true
+            # Max number of times that can be built
+            limit-based-townhall-level:
+                1: 2
+                2: 3
+            levels:
+                1:
+                    cost_gold: 300
+                    capacity: 1500
+                    schematics-name: 'ELIXIR_STORAGE_1.schematic'
+                2:
+                    cost_gold: 750
+                    capacity: 3000
+                    schematics-name: 'ELIXIR_STORAGE_2.schematic'
+                3:
+                    cost_gold: 1500
+                    capacity: 6000
+                    schematics-name: 'ELIXIR_STORAGE_3.schematic'
+                4:
+                    cost_gold: 3000
+                    capacity: 12000
+                    schematics-name: 'ELIXIR_STORAGE_4.schematic'
+                5:
+                    cost_elixir: 6000
+                    capacity: 25000
+                    schematics-name: 'ELIXIR_STORAGE_5.schematic'   
+        GOLD_STORAGE:
+            can-be-moved: true
+            # Max number of times that can be built
+            limit-based-townhall-level:
+                1: 2
+                2: 3
+            levels:
+                1:
+                    cost_gold: 300
+                    capacity: 1500
+                    schematics-name: 'GOLD_STORAGE_1.schem'
+                    
+        ARCHER_TOWER:
+            can-be-moved: true
+            # Max number of times that can be built
+            max-for-eachvillage: 3
+            levels:
+                1:
+                    cost_gold: 1000
+                    # Defense damages
+                    damage-arrow: 1
+                    # Range of attack archer
+                    damage-range: 9
+                    schematics-name: 'ARCHER_TOWER_1.schematic'
+                2:
+                    cost_gold: 2000
+                    damage-arrow: 1
+                    damage-range: 9
+                    schematics-name: 'ARCHER_TOWER_2.schematic'
+                3:
+                    cost_gold: 5000
+                    damage-arrow: 2
+                    damage-range: 9
+                    schematics-name: 'ARCHER_TOWER_3.schematic'
+                4:
+                    cost_gold: 20000
+                    damage-arrow: 3
+                    damage-range: 10
+                    schematics-name: 'ARCHER_TOWER_4.schematic'
+                5:
+                    cost_gold: 80000
+                    damage-arrow: 4
+                    damage-range: 10
+                    schematics-name: 'ARCHER_TOWER_5.schematic'
+        CANNON:
+            can-be-moved: true
+            # Max number of times that can be built
+            max-for-eachvillage: 3
+            levels:
+                1:
+                    cost_gold: 1000
+                    # Defense damages
+                    damage-bomb: 4
+                    damage-range: 4
+                    schematics-name: 'cannon-lv1.schematic'
+        MORTAR:
+            can-be-moved: true
+            # Max number of times that can be built
+            max-for-eachvillage: 3
+            levels:
+                1:
+                    cost_gold: 3000
+                    # Defense damages
+                    damage-range: 4
+                    damage-bomb: 0.2
+                    schematics-name: 'MORTAR_1.schematic'
+                2:
+                    cost_gold: 4000
+                    damage-range: 5
+                    damage-bomb: 0.3
+                    schematics-name: 'MORTAR_2.schematic'
+                3:
+                    cost_gold: 5000
+                    damage-range: 6
+                    damage-bomb: 0.7
+                    schematics-name: 'MORTAR_3.schematic'
+                4:
+                    cost_gold: 8000
+                    damage-range: 6
+                    damage-bomb: 0.8
+                    schematics-name: 'MORTAR_4.schematic'
+                5:
+                    cost_gold: 20000
+                    damage-range: 7
+                    damage-bomb: 0.9
+                    schematics-name: 'MORTAR_5.schematic'
+        WIZARD_TOWER:
+            can-be-moved: true
+            # Max number of times that can be built
+            max-for-eachvillage: 3
+            levels:
+                1:
+                    cost_gold: 2000
+                    damage-range: 9
+                    damage-bomb: 2
+                    schematics-name: 'WIZARD_TOWER_1.schematic'
+                    townhall-required: 2
+                2:
+                    cost_gold: 3000
+                    damage-range: 9
+                    damage-bomb: 3
+                    schematics-name: 'WIZARD_TOWER_2.schematic'
+                3:
+                    cost_gold: 4000
+                    damage-range: 10
+                    damage-bomb: 3
+                    schematics-name: 'WIZARD_TOWER_3.schematic'
+                4:
+                    cost_gold: 8000
+                    # Defense damages
+                    damage-range: 10
+                    damage-bomb: 3
+                    schematics-name: 'WIZARD_TOWER_4.schematic'
+                5:
+                    cost_gold: 20000
+                    damage-range: 10
+                    damage-bomb: 4
+                    schematics-name: 'WIZARD_TOWER_5.schematic'
+        GEMS_COLLECTOR:
+            can-be-moved: true
+            # Delay in seconds
+            # example: 600 = 10 minutes
+            delay: 600
+            # Max number of times that can be built
+            max-for-eachvillage: 1
+            levels:
+                1:
+                    cost_gems: 1000
+                    schematics-name: 'GEMS_COLLECTOR_1.schematic'
+                    increment-fordelay: 1
+        DARK_ELIXIR_STORAGE:
+            can-be-moved: true
+            # Max number of times that can be built
+            max-for-eachvillage: 1
+            levels:
+                1:
+                    cost_elixir: 200000
+                    capacity: 5000
+                    schematics-name: 'DARK_ELIXIR_STORAGE_1.schematic'
+                2:
+                    cost_elixir: 300000
+                    capacity: 10000
+                    schematics-name: 'DARK_ELIXIR_STORAGE_2.schematic'
+                3:
+                    cost_elixir: 500000
+                    capacity: 15000
+                    schematics-name: 'DARK_ELIXIR_STORAGE_3.schematic'
+                4:
+                    cost_elixir: 1000000
+                    capacity: 20000
+                    schematics-name: 'DARK_ELIXIR_STORAGE_4.schematic'
+                5:
+                    cost_elixir: 1500000
+                    capacity: 50000
+                    schematics-name: 'DARK_ELIXIR_STORAGE_5.schematic'
+        DARK_ELIXIR_DRILL:
+            can-be-moved: true
+            # Max number of times that can be built
+            max-for-eachvillage: 3
+            levels:
+                1:
+                    cost_elixir: 200000
+                    capacity: 10000
+                    increment-forminute: 3
+                    schematics-name: 'DARK_ELIXIR_DRILL_1.schematic'
+                2:
+                    cost_elixir: 300000
+                    capacity: 30000
+                    increment-forminute: 5
+                    schematics-name: 'DARK_ELIXIR_DRILL_2.schematic'
+                3:
+                    cost_elixir: 500000
+                    capacity: 100000
+                    increment-forminute: 7
+                    schematics-name: 'DARK_ELIXIR_DRILL_3.schematic'
+        TESLA:
+            can-be-moved: true
+            # Max number of times that can be built
+            max-for-eachvillage: 3
+            levels:
+                1:
+                    cost_elixir: 200000
+                    damage-range: 6
+                    damage-bomb: 3
+                    schematics-name: 'TESLA_1.schematic'
+                2:
+                    cost_elixir: 300000
+                    damage-range: 8
+                    damage-bomb: 4
+                    schematics-name: 'TESLA_2.schematic'
+                3:
+                    cost_elixir: 500000
+                    damage-range: 10
+                    damage-bomb: 6
+                    schematics-name: 'TESLA_3.schematic'
+        BOMB:
+            can-be-moved: true
+            # Max number of times that can be built
+            max-for-eachvillage: 5
+            levels:
+              '1':
+                # Effect CONFUSION on damaged player 
+                effect: 
+                - 'CONFUSION 200 1'
+                cost_gold: 1200
+                damage-range: 2
+                damage-bomb: 3
+                schematics-name: 'BOMB_1.schematic'
+        GUARDIAN:
+            can-be-moved: true
+            # Max number of times that can be spawned
+            max-for-eachvillage: 3
+            levels:
+              '1':
+                cost_elixir: 200000
+                equipment:
+                   boots: LEATHER_BOOTS
+                   chestplate: LEATHER_CHESTPLATE
+                   helmet: LEATHER_HELMET
+                   leggings: LEATHER_LEGGINGS 
+                   hand: WOODEN_SWORD # Wooden Sword
+              '2':
+                cost_elixir: 300000
+                equipment:
+                   boots: IRON_BOOTS
+                   chestplate: IRON_CHESTPLATE
+                   helmet: IRON_HELMET
+                   leggings: IRON_LEGGINGS
+                   hand: IRON_SWORD
+        BANNER:
+            display-name: '&dDecorative: &5&lBanner'
+            can-be-moved: true
+            max-for-eachvillage: 3
+            levels:
+              '1':
+                cost_gold: 500
+                schematics-name: 'BANNER_1.schematic'
+                
+        SKELETON_TRAP:
+            can-be-moved: true
+            # Max number of times that can be built
+            limit-based-townhall-level:
+                1: 1
+                2: 2
+            levels:
+              '1':
+                cost_gold: 5000
+                defense-spawn: 2 # number of npc's spawning
+                spawn-type: ZOMBIE
+                damage-range: 5 # range for spawning npc's
+                spawn-type-age: baby # baby/adult
+                spawn-equipment:
+                   boots: CHAINMAIL_BOOTS
+                   chestplate: CHAINMAIL_CHESTPLATE
+                   helmet: CHAINMAIL_HELMET
+                   leggings: CHAINMAIL_LEGGINGS 
+                   hand: WOODEN_SWORD
+                schematics-name: 'SKELETON_TRAP_1.schem'
+              '2':
+                cost_gold: 7000
+                defense-spawn: 2
+                spawn-type: ZOMBIE
+                damage-range: 6
+                spawn-type-age: baby # baby/adult
+                spawn-equipment:
+                   boots: LEATHER_BOOTS
+                   chestplate: LEATHER_CHESTPLATE
+                   helmet: LEATHER_HELMET
+                   leggings: LEATHER_LEGGINGS 
+                   hand: STONE_SWORD
+                schematics-name: 'SKELETON_TRAP_2.schem'
+              '3':
+                cost_gold: 9000
+                defense-spawn: 3
+                spawn-type: ZOMBIE
+                damage-range: 6
+                spawn-type-age: baby # baby/adult
+                spawn-equipment:
+                   boots: IRON_BOOTS
+                   chestplate: IRON_CHESTPLATE
+                   helmet: IRON_HELMET
+                   leggings: IRON_LEGGINGS 
+                   hand: IRON_SWORD
+                schematics-name: 'SKELETON_TRAP_3.schem'
+              '4':
+                cost_gold: 12000
+                defense-spawn: 3
+                spawn-type: ZOMBIE
+                damage-range: 6
+                spawn-type-age: baby # baby/adult
+                spawn-equipment:
+                   boots: DIAMOND_BOOTS
+                   chestplate: DIAMOND_CHESTPLATE
+                   helmet: DIAMOND_HELMET
+                   leggings: DIAMOND_LEGGINGS 
+                   hand: DIAMOND_SWORD
+                schematics-name: 'SKELETON_TRAP_4.schem'
+        LABORATORY:
+            can-be-moved: true
+            max-for-eachvillage: 1
+            levels:
+              '1':
+                cost_elixir: 1500
+                schematics-name: 'LABORATORY_1.schem'
+              '2':
+                cost_elixir: 5500
+                schematics-name: 'LABORATORY_2.schem'
+        BARRACKS:
+            can-be-moved: true
+            max-for-eachvillage: 1
+            levels:
+              '1':
+                cost_elixir: 1500
+                schematics-name: 'BARRACKS_1.schem'
+                levels:
+              '2':
+                cost_elixir: 5500
+                schematics-name: 'BARRACKS_2.schem'
+                
+        # Constructible wall inside the village
+        VILLAGE_WALL:
+            can-be-moved: true
+            limit-based-townhall-level:
+                1: 100
+                2: 140
+            levels:
+              '1':
+                cost_gold: 50
+                schematics-name: 'VILLAGE_WALL_1.schem'
+                
+        # Constructible Gate wall inside the village
+        VILLAGE_GATE_WALL:
+            can-be-moved: true
+            limit-based-townhall-level:
+                1: 10
+                2: 20
+            levels:
+              '1':
+                cost_gold: 75
+                schematics-name: 'GATE_VILLAGE_WALL_1.schem'
+                
+# GUI when player click or interect on structures builded on the map
+# this contains a item for withdraw resources
+structures-gui:
+    size: 18
+    item-withdrawal:
+        active: true
+        material: CHEST
+        title: '&4&lWithdraws resources'
+        type: WITHDRAWAL
+        lore:
+        - '&c(&6[current]/[capacity]&c)'
+        - '&cClick here to collect your resources!'
+    item-viewresource:
+        active: true
+        material: DROPPER
+        title: '&4&lResources:'
+        type: VIEW_RESOURCE
+        lore:
+        - '&c(&6[inside]/[capacity]&c)'
+        - '&eThese resources are contained'
+        - '&ein this structure'
+    item-viewinfo:
+        active: true
+        material: LEGACY_SIGN
+        title: '&e&lInformation'
+        type: VIEW_RESOURCE
+        lore:
+        - '&e[name]'
+        - '&cLevel: [level]'
+        - '&cIncrement per hour: &4[increment_per_hour]'
+    item-upgrade:
+        active: true
+        material: REDSTONE_TORCH
+        title: '&a&lUpgrade'
+        type: UPGRADE
+        lore:
+        - '&e[name]'
+        - '&cCurrent level: [level]'
+        - '&fNext level: [next_level]'
+        - '&bCost: [cost_next]'
+    item-move-strutture:
+        active: true
+        material: PISTON
+        title: '&a&lMove the structure'
+        type: MOVE
+        lore:
+        - '&2You can move this structure'
+        - '&2by repositioning the item'
+    item-delete-strutture:
+        active: true
+        material: REDSTONE
+        title: '&4&lDelete the structure'
+        type: DELETE
+        lore:
+        - '&6You will not be able to get this structure back'
+     
+# GUI when player click on one Guardian
+guardian-gui:
+    size: 18
+    title: '&c&lGuardian'
+    item-info-townall:
+        active: true
+        material: OAK_DOOR
+        title: '&e&lYour Townhall'
+        type: INFO_TOWNHALL
+        lore:
+        - '&cLevel of Townhall: [level_townhall]'
+    item-viewinfo:
+        active: true
+        material: LEGACY_SIGN
+        title: '&e&lInformation'
+        type: VIEW_INFO
+        lore:
+        - '&c&lGuardian'
+        - '&cLevel: [level]'
+    item-upgrade:
+        active: true
+        material: REDSTONE_TORCH
+        title: '&a&lUpgrade'
+        type: UPGRADE
+        lore:
+        - '&cCurrent level: [level]'
+        - '&fNext level: [next_level]'
+        - '&bCost: [cost_next]'
+    item-move-guardian:
+        active: true
+        material: PISTON
+        title: '&a&lMove this Guardian'
+        type: MOVE
+        lore:
+        - '&2You can move this Guardian'
+        - '&2by repositioning the item'
+        
+# Newbie player
+newbie-player:
+    gold: 1000
+    elixir: 1000
+    gems: 2000
+    trophies: 100
+    
+# Player's settings
+player-settings:
+    # Teletrasport a player (if have a village) when join
+    tp-ifvillage-onjoin: true
+    tp-onjoin-look-yaw: 0.00
+    # Message in chat when a player join
+    infovillage-onjoin: true
+    
+# Search inactive player - delete village
+task-search-inactive-player:
+    enable: true
+    player-days-inactive: 30
+
+# Ping and tag between players (Player tag)
+player-tag:
+    enable: true
+    tag-format: '&a@{player_name}&r'
+    notify-sound: BLOCK_NOTE_BLOCK_FLUTE
+    # if the tagged player is in the same clan
+    notify-same-clan: BLOCK_NOTE_BLOCK_PLING
+    
+# Attack
+attack:
+    # Time for the cooldown - time between each attack (in second)
+    cooldown-time: 600
+    # duration of the battle
+    time: 150
+    # trophies received if completed the attack at 100%
+    # if the attack is 50%, this value will be divided by two
+    trophies-100: 25
+    # trophies removed if the attack is completed less than 50%
+    trophies-lost: 15
+    # Player can open chest, furnaces, dispenser and dropper?
+    can-interect-on-attack: false
+    # Village shield system (after an attack)
+    # duration (in minutes) of the shield if the attack exceeds 50%
+    shield-duration-if-attack-50: 360
+    # duration (in minutes) of the shield if the attack exceeds 85%
+    shield-duration-if-attack-85: 720
+    # Town hall level. Compatibility radius for attack. 
+    townhall-level-range-compatibility-max: 3
+    townhall-level-range-compatibility-min: 2
+    # Commands disabled during an attack
+    commands-disabled-during-attack:
+    - fly
+    - god
+    - tpa
+
+spectator-mode:
+   # Commands disabled during a spectator mode
+   commands-enable-during-spectator:
+   - coc attack
+   - coc leave
+   
+# Tier's GUI
+tiers-manager:
+    tier-gui-title: '&5&lTiers manager'
+    tier-gui-item:
+        already-bought: 'DIRT'
+        to-buy: 'MYCELIUM'
+    # The command is executed by the console after the player buys a tier
+    tier-afterbuy-run-command: false
+    tier-afterbuy-command: 'luckperms user {username} permission set coc.tier_{name}'
+    
+# Holographic Displays support (if the plugin is installed)
+holographic-display:
+    # Enable Holographic Displays?
+    enable: true
+    # Level for structures
+    level-text: '&6Level &6&l'
+    # When a player who is attacking dies, his inventory will be inserted into a floating chest
+    attack-chest-death-player: true
+    attack-chest-death-player-lore:
+    - '&cGrave of %1%'
+    - '&6Time remaining: %2%'
+    # How long does the grave last before disappearing? (in minutes)
+    # default: 2 hours
+    attack-chest-death-player-time: 120

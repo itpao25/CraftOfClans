@@ -1,0 +1,16 @@
+name: CraftOfClans
+main: it.itpao25.craftofclans.CraftOfClans
+version: 0.9.0
+api-version: 1.13
+description: 'Inspired by the famous game, CraftOfClans is growing your village, attacking others and more...'
+author: itpao25
+load: STARTUP
+depend: [WorldEdit, Citizens, ProtocolLib, EffectLib, Sentinel]
+softdepend: [TitleManager, MVdWPlaceholderAPI, PlaceholderAPI, HolographicDisplays, CraftOfClansVault, AsyncWorldEdit, WorldGuard]
+commands:
+   coc:
+      description: CraftOfClans main command
+   clan:
+      description: CraftOfClans clan command
+   tier:
+      description: CraftOfClans tier command

@@ -1,0 +1,48 @@
+clans-settings:
+    # Max members for each clan
+    max-members: 25
+    # Max name length
+    max-length-name: 20
+    # Min name length
+    min-length-name: 3
+    # PVP among clan members
+    pvp-among-clan-members: false
+    # Create a new clan using the wizard with GUI
+    gui-wizard:
+        title: '&c&lCreate a new clan'
+        empty-slots: GRAY_STAINED_GLASS_PANE
+        items:
+            item-set-name:
+                slot: 10
+                title: '&e&lSet the name of your clan'
+                material: NAME_TAG
+                type: SET_NAME
+            item-set-type:
+                slot: 13
+                title: '&b&lSet the type of your clan'
+                material: PISTON
+                type: SET_TYPE
+            item-set-mintrophies:
+                slot: 16
+                title: '&c&lSet the minimum trophies to join'
+                material: ANVIL
+                type: SET_MIN_TROPHIES
+            item-set-desc:
+                slot: 29
+                title: '&9&lSet the description of your clan'
+                material: CHEST
+                type: SET_DESC
+            item-get-info:
+                slot: 33
+                title: '&a&lUseful information'
+                material: OAK_SIGN
+            item-submit:
+                slot: '52,53'
+                title: '&a&lCreate your clan'
+                material: LIME_STAINED_GLASS_PANE
+                type: SUBMIT
+            item-back:
+                slot: '45,46'
+                title: '&c&lBack'
+                material: RED_STAINED_GLASS_PANE
+                type: BACK

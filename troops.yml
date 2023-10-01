@@ -1,0 +1,216 @@
+
+# gui of laboratory structure
+laboratory-gui:
+    size: 18
+    item-buy:
+        active: true
+        lore:
+        - '&e&lClick to buy!'
+        - '&bCost: [cost]'
+    item-having:
+        active: true
+        lore:
+        - '&6&lClick to upgrade!'
+        - '&cCurrent level: [level]'
+        - '&fNext level: [next_level]'
+        - '&bCost: [cost_next]'
+        
+# gui of barracks structure
+barracks-gui:
+    size: 18
+    item-troop-pickup:
+        lore:
+        - '&a&lClick to pick up [name]'
+        - '&aUse it in attacks.'
+    item-troop-training:
+        lore:
+        - '&6&lClick to start training!'
+        - '&eTime Required: &6[time_required]'
+        - '&eCost training: &6[cost_training]'
+    item-troop-onhold:
+        lore:
+        - '&eIn training'
+        - '&c&lNot ready yet'
+        - '&aRemaining time: &6[time_remaining]'
+        
+troops:
+   BARBARIAN:
+      enable: true
+      type_mob: PLAYER
+      display_name: '&e&lBarbarian'
+      
+      # Time required for training (in seconds)
+      # format barracks level time in seconds
+      time-traning-based-level-barracks:
+         1: 240
+         2: 180
+      levels:
+         '1':
+            cost_elixir: 300
+            # required lab level
+            lab_level_requirement: 1
+            # number of npc's that will be spawned
+            spawn-number: 1
+            # equipment of the spawned npc
+            equipment:
+               hand: WOODEN_SWORD
+            # training costs
+            training:
+               cost_elixir: 30
+            # damage option (if 'auto' will be calculated automatically based on the npc's equipment)
+            damage: 'auto'
+         '2':
+            cost_elixir: 800
+            lab_level_requirement: 1
+            spawn-number: 1
+            equipment:
+               boots: CHAINMAIL_BOOTS
+               chestplate: CHAINMAIL_CHESTPLATE
+               helmet: CHAINMAIL_HELMET
+               leggings: CHAINMAIL_LEGGINGS 
+               hand: WOODEN_SWORD
+            training:
+               cost_elixir: 35
+            damage: 'auto'
+         '3':
+            cost_elixir: 1200
+            lab_level_requirement: 2
+            spawn-number: 2
+            equipment:
+               boots: LEATHER_BOOTS
+               chestplate: LEATHER_CHESTPLATE
+               helmet: LEATHER_HELMET
+               leggings: LEATHER_LEGGINGS 
+               hand: STONE_SWORD
+            training:
+               cost_elixir: 40
+            damage: 'auto'
+         '4':
+            cost_elixir: 1800
+            lab_level_requirement: 2
+            spawn-number: 2
+            equipment:
+               boots: IRON_BOOTS
+               chestplate: IRON_CHESTPLATE
+               helmet: IRON_HELMET
+               leggings: IRON_LEGGINGS 
+               hand: IRON_SWORD
+            training:
+               cost_elixir: 45
+            damage: 'auto'
+               
+   ARCHER:
+      enable: true
+      type_mob: PLAYER
+      display_name: '&5&lArcher'
+      
+      time-traning-based-level-barracks:
+         1: 240
+         2: 180
+      levels:
+         '1':
+            cost_elixir: 300
+            lab_level_requirement: 1
+            spawn-number: 1
+            equipment:
+               hand: BOW
+            training:
+               cost_elixir: 30
+            damage: 1.5
+         '2':
+            cost_elixir: 800
+            lab_level_requirement: 1
+            spawn-number: 1
+            equipment:
+               boots: CHAINMAIL_BOOTS
+               chestplate: CHAINMAIL_CHESTPLATE
+               helmet: CHAINMAIL_HELMET
+               leggings: CHAINMAIL_LEGGINGS 
+               hand: BOW
+            training:
+               cost_elixir: 35
+            damage: 2
+         '3':
+            cost_elixir: 1200
+            lab_level_requirement: 2
+            spawn-number: 2
+            equipment:
+               boots: LEATHER_BOOTS
+               chestplate: LEATHER_CHESTPLATE
+               helmet: LEATHER_HELMET
+               leggings: LEATHER_LEGGINGS 
+               hand: BOW
+            training:
+               cost_elixir: 40
+            damage: 2.5
+         '4':
+            cost_elixir: 1800
+            lab_level_requirement: 2
+            spawn-number: 2
+            equipment:
+               boots: IRON_BOOTS
+               chestplate: IRON_CHESTPLATE
+               helmet: IRON_HELMET
+               leggings: IRON_LEGGINGS 
+               hand: BOW
+            training:
+               cost_elixir: 45
+            damage: 2.8
+            
+   WIZARD:
+      enable: true
+      type_mob: PLAYER
+      display_name: '&9&lWizard'
+      
+      time-traning-based-level-barracks:
+         1: 280
+         2: 210
+      levels:
+         '1':
+            cost_elixir: 600
+            lab_level_requirement: 1
+            spawn-number: 1
+            equipment:
+               hand: BLAZE_ROD
+            training:
+               cost_elixir: 40
+            damage: 2.5
+         '2':
+            cost_elixir: 1200
+            lab_level_requirement: 1
+            spawn-number: 1
+            equipment:
+               boots: CHAINMAIL_BOOTS
+               chestplate: CHAINMAIL_CHESTPLATE
+               helmet: CHAINMAIL_HELMET
+               leggings: CHAINMAIL_LEGGINGS 
+               hand: BLAZE_ROD
+            training:
+               cost_elixir: 55
+            damage: 3
+         '3':
+            cost_elixir: 1800
+            lab_level_requirement: 2
+            spawn-number: 1
+            equipment:
+               boots: LEATHER_BOOTS
+               chestplate: LEATHER_CHESTPLATE
+               helmet: LEATHER_HELMET
+               leggings: LEATHER_LEGGINGS 
+               hand: BLAZE_ROD
+            training:
+               cost_elixir: 60
+            damage: 3.5
+         '4':
+            cost_elixir: 2000
+            lab_level_requirement: 2
+            spawn-number: 1
+            equipment:
+               boots: IRON_BOOTS
+               chestplate: IRON_CHESTPLATE
+               helmet: IRON_HELMET
+               leggings: IRON_LEGGINGS 
+               hand: BLAZE_ROD
+            training:
+               cost_elixir: 65
+            damage: 4
